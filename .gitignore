@@ -1,0 +1,10 @@
+# Project exclude paths
+/MyBatis_ DynamicSql/target/
+/MyBatis_Annotation/target/
+/MyBatis_CRUD/target/
+/MyBatis_Dao/target/
+/MyBatis_Dao_Impl/target/
+/MyBatis_ManyToMany/target/
+/MyBatis_OneToMany/target/
+/MyBatis_QuickStart/target/
+/MyBatis_User-Defined/target/

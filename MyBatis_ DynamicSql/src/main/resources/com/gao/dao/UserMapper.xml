@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gao.dao.UserMapper">
+    <sql id="defaultSql">
+        SELECT *
+        from user
+    </sql>
+    <!--    查询所有用户信息-->
+    <select id="finAll" resultType="com.gao.domain.User">
+        SELECT *
+        from user;
+    </select>
+    <!--    根据id查询用户信息-->
+    <select id="findUserById" parameterType="integer" resultType="com.gao.domain.User">
+        select *
+        from user
+        where id = #{id}
+    </select>
+    <!--    根据用户名模糊查询用户信息-->
+    <select id="findUserByName" parameterType="string" resultType="com.gao.domain.User">
+        <!-- 模糊查询的第一种方式
+        select *
+        from user
+        where username like #{username}
+        -->
+        <!-- 模糊查询的第二种方式 -->
+        select *
+        from user
+        where username like '%${value}%'
+    </select>
+    <select id="findUserByUser" parameterType="com.gao.domain.User" resultType="com.gao.domain.User">
+        -- select * from user where 1=1
+        -- 注意：if 标签的test属性中写的是对象的属性名，如果是包装类的对象要使用OGNL表达式的写法。 另外要注意where 1=1 的作用~！
+        <!--        <if test="username!=null and username!=''">-->
+        <!--            and  username=#{username}-->
+        <!--        </if>-->
+        <!--        <if test="sex !=null">-->
+        <!--            and sex=#{sex}-->
+        <!--        </if>-->
+        select * from user
+        <where>
+            <if test="username!=null and username!=''">
+                and username=#{username}
+            </if>
+            <if test="sex !=null">
+                and sex=#{sex}
+            </if>
+        </where>
+    </select>
+    <!-- 根据queryVo的条件查询用户 -->
+    <select id="findByVo" parameterType="com.gao.domain.QueryVo" resultType="com.gao.domain.User">
+        <include refid="defaultSql"></include>
+        <where>
+            <if test="ids!=null and ids.size()>0">
+                <foreach collection="ids" open="id in (" close=")" item="id" separator=",">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+    </select>
+</mapper>

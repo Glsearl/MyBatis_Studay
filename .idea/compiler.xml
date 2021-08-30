@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="MyBatis_Dao" />
+        <module name="MyBatis_Dao_Impl" />
+        <module name="MyBatis_User-Defined" />
+        <module name="MyBatis_ DynamicSql" />
+        <module name="MyBatis_ManyToMany" />
+        <module name="MyBatis_Annotation" />
+        <module name="MyBatis_CRUD" />
+        <module name="MyBatis_QuickStart" />
+        <module name="MyBatis_OneToMany" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
